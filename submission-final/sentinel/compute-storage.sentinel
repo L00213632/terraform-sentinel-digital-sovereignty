@@ -1,0 +1,43 @@
+import "tfplan/v2" as tfplan
+
+allowed_instance_types = [
+    "t3.micro",
+    "t3.small",
+    "t3.medium",
+]
+
+instances = filter tfplan.resource_changes as _, resource {
+    resource.type is "aws_instance" and
+    resource.mode is "managed" and
+    resource.change.actions is not ["delete"]
+}
+
+ebs_volumes = filter tfplan.resource_changes as _, resource {
+    resource.type is "aws_ebs_volume" and
+    resource.mode is "managed" and
+    resource.change.actions is not ["delete"]
+}
+
+instance_types_valid = rule {
+    all instances as _, instance {
+        instance.change.after.instance_type in allowed_instance_types
+    }
+}
+
+imdsv2_valid = rule {
+    all instances as _, instance {
+        instance.change.after.metadata_options[0].http_tokens is "required"
+    }
+}
+
+ebs_encryption_valid = rule {
+    all ebs_volumes as _, volume {
+        volume.change.after.encrypted is true
+    }
+}
+
+main = rule {
+    instance_types_valid and
+    imdsv2_valid and
+    ebs_encryption_valid
+}

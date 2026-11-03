@@ -1,0 +1,21 @@
+import "tfconfig/v2" as tfconfig
+
+approved_regions = [
+    "eu-west-1",
+    "eu-west-2",
+    "eu-central-1",
+]
+
+aws_providers = filter tfconfig.providers as _, provider {
+    provider.name is "aws"
+}
+
+valid_regions = rule {
+    all aws_providers as _, provider {
+        provider.config.region in approved_regions
+    }
+}
+
+main = rule {
+    valid_regions
+}

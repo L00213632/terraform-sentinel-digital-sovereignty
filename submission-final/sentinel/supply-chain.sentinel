@@ -1,0 +1,31 @@
+import "tfconfig/v2" as tfconfig
+
+approved_provider = "registry.terraform.io/hashicorp/aws"
+
+approved_version = "= 5.0.0"
+
+approved_module_source = "github.com/ATUL0012345/"
+
+provider_checks = filter tfconfig.providers as _, provider {
+    provider.name is "aws"
+}
+
+module_checks = tfconfig.module_calls
+
+providers_valid = rule {
+    all provider_checks as _, provider {
+        provider.full_name is approved_provider and
+        provider.version_constraint is approved_version
+    }
+}
+
+modules_valid = rule {
+    all module_checks as _, module {
+        module.source matches "^github.com/ATUL0012345/" and
+        module.version_constraint is not ""
+    }
+}
+
+main = rule {
+    providers_valid and modules_valid
+}

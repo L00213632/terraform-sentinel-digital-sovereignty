@@ -1,0 +1,18 @@
+# Terraform working files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+
+# Local Terraform credentials
+.terraformrc
+terraform.rc
+
+# Local variable files may contain secrets
+*.tfvars
+*.tfvars.json
+
+# Temporary assignment backup
+main.tf.compliant-backup

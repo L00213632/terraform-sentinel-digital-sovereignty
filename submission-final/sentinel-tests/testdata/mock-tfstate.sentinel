@@ -1,0 +1,56 @@
+import "strings"
+import "types"
+
+outputs = {
+	"approved_region": {
+		"sensitive": false,
+		"type":      "string",
+		"value":     "eu-west-1",
+	},
+	"organization": {
+		"sensitive": false,
+		"type":      "string",
+		"value":     "ATUL0012345",
+	},
+	"security_status": {
+		"sensitive": false,
+		"type":      "string",
+		"value":     "Digital sovereignty configuration created",
+	},
+}
+
+_modules = {
+	"root": {
+		"data":      {},
+		"path":      [],
+		"resources": {},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.17.1"
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

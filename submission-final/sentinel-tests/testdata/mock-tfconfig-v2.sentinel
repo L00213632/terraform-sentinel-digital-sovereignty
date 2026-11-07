@@ -1,0 +1,109 @@
+import "strings"
+
+providers = {
+	"terraform": {
+		"alias":               "",
+		"config":              {},
+		"full_name":           "terraform.io/builtin/terraform",
+		"module_address":      "",
+		"name":                "terraform",
+		"provider_config_key": "terraform",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"terraform_data.digital_sovereignty_demo": {
+		"address": "terraform_data.digital_sovereignty_demo",
+		"config": {
+			"input": {
+				"constant_value": {
+					"approved_region":     "eu-west-1",
+					"data_residency":      "Ireland-EU",
+					"encryption_required": true,
+					"environment":         "Ireland",
+					"imdsv2_required":     true,
+					"module_source":       "github.com/example/secure-module",
+					"module_version":      "1.0.0",
+					"organization":        "ATUL0012345",
+					"project":             "Digital Sovereignty",
+					"provider_source":     "registry.terraform.io/hashicorp/aws",
+					"provider_version":    "5.0.0",
+					"ssh_restricted":      true,
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "digital_sovereignty_demo",
+		"provider_config_key": "terraform",
+		"provisioners":        [],
+		"type":                "terraform_data",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"environment": {
+		"default":        "Ireland",
+		"description":    "Deployment environment",
+		"module_address": "",
+		"name":           "environment",
+	},
+}
+
+outputs = {
+	"approved_region": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "",
+		"name":           "approved_region",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"terraform_data.digital_sovereignty_demo.input.approved_region",
+				"terraform_data.digital_sovereignty_demo.input",
+				"terraform_data.digital_sovereignty_demo",
+			],
+		},
+	},
+	"organization": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "",
+		"name":           "organization",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"terraform_data.digital_sovereignty_demo.input.organization",
+				"terraform_data.digital_sovereignty_demo.input",
+				"terraform_data.digital_sovereignty_demo",
+			],
+		},
+	},
+	"security_status": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "",
+		"name":           "security_status",
+		"sensitive":      false,
+		"value": {
+			"constant_value": "Digital sovereignty configuration created",
+		},
+	},
+}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

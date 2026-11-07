@@ -1,0 +1,21 @@
+terraform_version = "1.17.1"
+
+outputs = {
+	"approved_region": {
+		"name":      "approved_region",
+		"sensitive": false,
+		"value":     "eu-west-1",
+	},
+	"organization": {
+		"name":      "organization",
+		"sensitive": false,
+		"value":     "ATUL0012345",
+	},
+	"security_status": {
+		"name":      "security_status",
+		"sensitive": false,
+		"value":     "Digital sovereignty configuration created",
+	},
+}
+
+resources = {}

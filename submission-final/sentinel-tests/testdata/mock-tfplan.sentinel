@@ -1,0 +1,156 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"terraform_data": {
+				"digital_sovereignty_demo": {
+					0: {
+						"applied": {
+							"input": {
+								"approved_region":     "eu-west-1",
+								"data_residency":      "Ireland-EU",
+								"encryption_required": true,
+								"environment":         "Ireland",
+								"imdsv2_required":     true,
+								"module_source":       "github.com/example/secure-module",
+								"module_version":      "1.0.0",
+								"organization":        "ATUL0012345",
+								"project":             "Digital Sovereignty",
+								"provider_source":     "registry.terraform.io/hashicorp/aws",
+								"provider_version":    "5.0.0",
+								"ssh_restricted":      true,
+							},
+							"store":            null,
+							"triggers_replace": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"input.%": {
+								"computed": false,
+								"new":      "12",
+								"old":      "",
+							},
+							"input.approved_region": {
+								"computed": false,
+								"new":      "eu-west-1",
+								"old":      "",
+							},
+							"input.data_residency": {
+								"computed": false,
+								"new":      "Ireland-EU",
+								"old":      "",
+							},
+							"input.encryption_required": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"input.environment": {
+								"computed": false,
+								"new":      "Ireland",
+								"old":      "",
+							},
+							"input.imdsv2_required": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"input.module_source": {
+								"computed": false,
+								"new":      "github.com/example/secure-module",
+								"old":      "",
+							},
+							"input.module_version": {
+								"computed": false,
+								"new":      "1.0.0",
+								"old":      "",
+							},
+							"input.organization": {
+								"computed": false,
+								"new":      "ATUL0012345",
+								"old":      "",
+							},
+							"input.project": {
+								"computed": false,
+								"new":      "Digital Sovereignty",
+								"old":      "",
+							},
+							"input.provider_source": {
+								"computed": false,
+								"new":      "registry.terraform.io/hashicorp/aws",
+								"old":      "",
+							},
+							"input.provider_version": {
+								"computed": false,
+								"new":      "5.0.0",
+								"old":      "",
+							},
+							"input.ssh_restricted": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"output": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"store": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"triggers_replace": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.17.1"
+
+variables = {
+	"environment": "Ireland",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

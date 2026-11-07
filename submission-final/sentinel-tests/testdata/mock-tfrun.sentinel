@@ -1,0 +1,39 @@
+id = "run-6TrvBz5SoAjWpXpc"
+created_at = "2026-11-03T21:51:13.696Z"
+created_by = "l00213632"
+message = "Triggered via UI"
+commit_sha = "ac9a0ead3131e8af7acba6283fbeda2685e22fdd"
+speculative = false
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = []
+target_addrs = null
+project = {
+	"id":   "prj-3WERQfnnwrjDwRHa",
+	"name": "Default Project",
+}
+
+variables = {}
+
+organization = {
+	"name": "ATUL0012345",
+}
+
+workspace = {
+	"auto_apply":     false,
+	"created_at":     "2026-11-03T20:39:17.638Z",
+	"description":    "Policy as Code ",
+	"execution_mode": "default",
+	"id":             "ws-4PrEHAQWxGDERQgx",
+	"name":           "submission-final",
+	"tag_bindings":   [],
+	"tags":           [],
+	"vcs_repo": {
+		"branch":             "",
+		"display_identifier": "L00213632/terraform-sentinel-digital-sovereignty",
+		"identifier":         "L00213632/terraform-sentinel-digital-sovereignty",
+		"ingress_submodules": false,
+	},
+	"working_directory": "submission-final/terraform",
+}

@@ -1,0 +1,115 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":    {},
+		"modules": {},
+		"outputs": {
+			"approved_region": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"terraform_data.digital_sovereignty_demo.input.approved_region",
+					"terraform_data.digital_sovereignty_demo.input",
+					"terraform_data.digital_sovereignty_demo",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"organization": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"terraform_data.digital_sovereignty_demo.input.organization",
+					"terraform_data.digital_sovereignty_demo.input",
+					"terraform_data.digital_sovereignty_demo",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"security_status": {
+				"depends_on":  [],
+				"description": "",
+				"references":  [],
+				"sensitive":   false,
+				"value":       "Digital sovereignty configuration created",
+			},
+		},
+		"providers": {
+			"terraform": {
+				"alias": {
+					"": {
+						"config":     {},
+						"references": {},
+						"version":    "",
+					},
+				},
+				"config":     {},
+				"references": {},
+				"version":    "",
+			},
+		},
+		"resources": {
+			"terraform_data": {
+				"digital_sovereignty_demo": {
+					"config": {
+						"input": {
+							"approved_region":     "eu-west-1",
+							"data_residency":      "Ireland-EU",
+							"encryption_required": true,
+							"environment":         "Ireland",
+							"imdsv2_required":     true,
+							"module_source":       "github.com/example/secure-module",
+							"module_version":      "1.0.0",
+							"organization":        "ATUL0012345",
+							"project":             "Digital Sovereignty",
+							"provider_source":     "registry.terraform.io/hashicorp/aws",
+							"provider_version":    "5.0.0",
+							"ssh_restricted":      true,
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"input": [],
+					},
+				},
+			},
+		},
+		"variables": {
+			"environment": {
+				"default":     "Ireland",
+				"description": "Deployment environment",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

@@ -1,0 +1,374 @@
+terraform_version = "1.17.1"
+
+planned_values = {
+	"outputs": {
+		"approved_region": {
+			"name":      "approved_region",
+			"sensitive": false,
+			"value":     "eu-west-1",
+		},
+		"organization": {
+			"name":      "organization",
+			"sensitive": false,
+			"value":     "ATUL0012345",
+		},
+		"security_status": {
+			"name":      "security_status",
+			"sensitive": false,
+			"value":     "Digital sovereignty configuration created",
+		},
+	},
+	"resources": {
+		"terraform_data.digital_sovereignty_demo": {
+			"address":        "terraform_data.digital_sovereignty_demo",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "digital_sovereignty_demo",
+			"provider_name":  "terraform.io/builtin/terraform",
+			"tainted":        false,
+			"type":           "terraform_data",
+			"values": {
+				"input": {
+					"approved_region":     "eu-west-1",
+					"data_residency":      "Ireland-EU",
+					"encryption_required": true,
+					"environment":         "Ireland",
+					"imdsv2_required":     true,
+					"module_source":       "github.com/example/secure-module",
+					"module_version":      "1.0.0",
+					"organization":        "ATUL0012345",
+					"project":             "Digital Sovereignty",
+					"provider_source":     "registry.terraform.io/hashicorp/aws",
+					"provider_version":    "5.0.0",
+					"ssh_restricted":      true,
+				},
+				"store":            null,
+				"triggers_replace": null,
+			},
+		},
+	},
+}
+
+variables = {
+	"environment": {
+		"name":  "environment",
+		"value": "Ireland",
+	},
+}
+
+resource_changes = {
+	"terraform_data.digital_sovereignty_demo": {
+		"address": "terraform_data.digital_sovereignty_demo",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"input": {
+					"approved_region":     "eu-west-1",
+					"data_residency":      "Ireland-EU",
+					"encryption_required": true,
+					"environment":         "Ireland",
+					"imdsv2_required":     true,
+					"module_source":       "github.com/example/secure-module",
+					"module_version":      "1.0.0",
+					"organization":        "ATUL0012345",
+					"project":             "Digital Sovereignty",
+					"provider_source":     "registry.terraform.io/hashicorp/aws",
+					"provider_version":    "5.0.0",
+					"ssh_restricted":      true,
+				},
+				"store":            null,
+				"triggers_replace": null,
+			},
+			"after_unknown": {
+				"id":     true,
+				"input":  {},
+				"output": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "digital_sovereignty_demo",
+		"provider_name":  "terraform.io/builtin/terraform",
+		"type":           "terraform_data",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {
+	"approved_region": {
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after":         "eu-west-1",
+			"after_unknown": false,
+			"before":        null,
+		},
+		"name": "approved_region",
+	},
+	"organization": {
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after":         "ATUL0012345",
+			"after_unknown": false,
+			"before":        null,
+		},
+		"name": "organization",
+	},
+	"security_status": {
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after":         "Digital sovereignty configuration created",
+			"after_unknown": false,
+			"before":        null,
+		},
+		"name": "security_status",
+	},
+}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"terraform": {
+				"full_name": "terraform.io/builtin/terraform",
+				"name":      "terraform",
+			},
+		},
+		"root_module": {
+			"outputs": {
+				"approved_region": {
+					"expression": {
+						"references": [
+							"terraform_data.digital_sovereignty_demo.input.approved_region",
+							"terraform_data.digital_sovereignty_demo.input",
+							"terraform_data.digital_sovereignty_demo",
+						],
+					},
+				},
+				"organization": {
+					"expression": {
+						"references": [
+							"terraform_data.digital_sovereignty_demo.input.organization",
+							"terraform_data.digital_sovereignty_demo.input",
+							"terraform_data.digital_sovereignty_demo",
+						],
+					},
+				},
+				"security_status": {
+					"expression": {
+						"constant_value": "Digital sovereignty configuration created",
+					},
+				},
+			},
+			"resources": [
+				{
+					"address": "terraform_data.digital_sovereignty_demo",
+					"expressions": {
+						"input": {
+							"constant_value": {
+								"approved_region":     "eu-west-1",
+								"data_residency":      "Ireland-EU",
+								"encryption_required": true,
+								"environment":         "Ireland",
+								"imdsv2_required":     true,
+								"module_source":       "github.com/example/secure-module",
+								"module_version":      "1.0.0",
+								"organization":        "ATUL0012345",
+								"project":             "Digital Sovereignty",
+								"provider_source":     "registry.terraform.io/hashicorp/aws",
+								"provider_version":    "5.0.0",
+								"ssh_restricted":      true,
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "digital_sovereignty_demo",
+					"provider_config_key": "terraform",
+					"schema_version":      0,
+					"type":                "terraform_data",
+				},
+			],
+			"variables": {
+				"environment": {
+					"default":     "Ireland",
+					"description": "Deployment environment",
+				},
+			},
+		},
+	},
+	"format_version": "1.2",
+	"output_changes": {
+		"approved_region": {
+			"actions": [
+				"create",
+			],
+			"after":            "eu-west-1",
+			"after_sensitive":  false,
+			"after_unknown":    false,
+			"before":           null,
+			"before_sensitive": false,
+		},
+		"organization": {
+			"actions": [
+				"create",
+			],
+			"after":            "ATUL0012345",
+			"after_sensitive":  false,
+			"after_unknown":    false,
+			"before":           null,
+			"before_sensitive": false,
+		},
+		"security_status": {
+			"actions": [
+				"create",
+			],
+			"after":            "Digital sovereignty configuration created",
+			"after_sensitive":  false,
+			"after_unknown":    false,
+			"before":           null,
+			"before_sensitive": false,
+		},
+	},
+	"planned_values": {
+		"outputs": {
+			"approved_region": {
+				"sensitive": false,
+				"value":     "eu-west-1",
+			},
+			"organization": {
+				"sensitive": false,
+				"value":     "ATUL0012345",
+			},
+			"security_status": {
+				"sensitive": false,
+				"value":     "Digital sovereignty configuration created",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address":        "terraform_data.digital_sovereignty_demo",
+					"mode":           "managed",
+					"name":           "digital_sovereignty_demo",
+					"provider_name":  "terraform.io/builtin/terraform",
+					"schema_version": 0,
+					"sensitive_values": {
+						"input":  {},
+						"output": {},
+					},
+					"type": "terraform_data",
+					"values": {
+						"input": {
+							"approved_region":     "eu-west-1",
+							"data_residency":      "Ireland-EU",
+							"encryption_required": true,
+							"environment":         "Ireland",
+							"imdsv2_required":     true,
+							"module_source":       "github.com/example/secure-module",
+							"module_version":      "1.0.0",
+							"organization":        "ATUL0012345",
+							"project":             "Digital Sovereignty",
+							"provider_source":     "registry.terraform.io/hashicorp/aws",
+							"provider_version":    "5.0.0",
+							"ssh_restricted":      true,
+						},
+						"store":            null,
+						"triggers_replace": null,
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.17.1",
+		"values": {
+			"outputs": {
+				"approved_region": {
+					"sensitive": false,
+					"value":     "eu-west-1",
+				},
+				"organization": {
+					"sensitive": false,
+					"value":     "ATUL0012345",
+				},
+				"security_status": {
+					"sensitive": false,
+					"value":     "Digital sovereignty configuration created",
+				},
+			},
+			"root_module": {},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"input",
+			],
+			"resource": "terraform_data.digital_sovereignty_demo",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "terraform_data.digital_sovereignty_demo",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"input": {
+						"approved_region":     "eu-west-1",
+						"data_residency":      "Ireland-EU",
+						"encryption_required": true,
+						"environment":         "Ireland",
+						"imdsv2_required":     true,
+						"module_source":       "github.com/example/secure-module",
+						"module_version":      "1.0.0",
+						"organization":        "ATUL0012345",
+						"project":             "Digital Sovereignty",
+						"provider_source":     "registry.terraform.io/hashicorp/aws",
+						"provider_version":    "5.0.0",
+						"ssh_restricted":      true,
+					},
+					"store":            null,
+					"triggers_replace": null,
+				},
+				"after_sensitive": {
+					"input":  {},
+					"output": {},
+				},
+				"after_unknown": {
+					"id":     true,
+					"input":  {},
+					"output": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "digital_sovereignty_demo",
+			"provider_name": "terraform.io/builtin/terraform",
+			"type":          "terraform_data",
+		},
+	],
+	"terraform_version": "1.17.1",
+	"timestamp":         "2026-11-03T21:51:20Z",
+	"variables": {
+		"environment": {
+			"value": "Ireland",
+		},
+	},
+}

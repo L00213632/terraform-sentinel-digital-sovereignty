@@ -1,11 +1,19 @@
-mock "tfconfig/v2" {
-  module {
-    source = "../sentinel-tests/testdata/mock-tfconfig-v2.sentinel"
-  }
+policy "sovereignty" {
+  source = "./sovereignty.sentinel"
+  enforcement_level = "hard-mandatory"
 }
 
-mock "tfplan/v2" {
-  module {
-    source = "../sentinel-tests/testdata/mock-tfplan-v2.sentinel"
-  }
+policy "supply-chain" {
+  source = "./supply-chain.sentinel"
+  enforcement_level = "hard-mandatory"
+}
+
+policy "compute-storage" {
+  source = "./compute-storage.sentinel"
+  enforcement_level = "hard-mandatory"
+}
+
+policy "network-security" {
+  source = "./network-security.sentinel"
+  enforcement_level = "hard-mandatory"
 }

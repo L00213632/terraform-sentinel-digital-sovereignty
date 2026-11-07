@@ -12,10 +12,11 @@ aws_providers = filter tfconfig.providers as _, provider {
 
 valid_regions = rule {
     all aws_providers as _, provider {
-        provider.config.region in approved_regions
+        "region" in provider.config and
+        "constant_value" in provider.config.region and
+        provider.config.region.constant_value in approved_regions
     }
 }
-
 main = rule {
     valid_regions
 }

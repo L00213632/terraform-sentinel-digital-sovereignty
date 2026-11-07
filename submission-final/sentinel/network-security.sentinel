@@ -17,23 +17,17 @@ inline_ssh_valid = rule {
         all group.change.after.ingress as _, ingress {
             ingress.from_port is not 22 or
             ingress.to_port is not 22 or
-            (
-                "0.0.0.0/0" not in ingress.cidr_blocks and
-                "::/0" not in ingress.ipv6_cidr_blocks
-            )
+            ("0.0.0.0/0" not in ingress.cidr_blocks and "::/0" not in ingress.ipv6_cidr_blocks)
         }
     }
 }
 
 separate_ssh_valid = rule {
-    all security_rules as _, rule {
-        rule.change.after.type is not "ingress" or
-        rule.change.after.from_port is not 22 or
-        rule.change.after.to_port is not 22 or
-        (
-            "0.0.0.0/0" not in rule.change.after.cidr_blocks and
-            "::/0" not in rule.change.after.ipv6_cidr_blocks
-        )
+    all security_rules as _, sg_rule {
+        sg_rule.change.after.type is not "ingress" or
+        sg_rule.change.after.from_port is not 22 or
+        sg_rule.change.after.to_port is not 22 or
+        ("0.0.0.0/0" not in sg_rule.change.after.cidr_blocks and "::/0" not in sg_rule.change.after.ipv6_cidr_blocks)
     }
 }
 

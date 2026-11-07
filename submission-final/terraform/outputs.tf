@@ -1,11 +1,15 @@
-output "organization" {
-  value = terraform_data.digital_sovereignty_demo.input.organization
+output "aws_region" {
+  value = "eu-west-1"
 }
 
-output "approved_region" {
-  value = terraform_data.digital_sovereignty_demo.input.approved_region
+output "instance_type" {
+  value = aws_instance.web_server.instance_type
 }
 
-output "security_status" {
-  value = "Digital sovereignty configuration created"
+output "ebs_encryption" {
+  value = aws_ebs_volume.encrypted_data.encrypted
+}
+
+output "security_group_id" {
+  value = aws_security_group.web_sg.id
 }

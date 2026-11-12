@@ -44,4 +44,4 @@ In production environment, all validated security policies need to be configured
 
 5. Conclusion
    
-This project demonstrates how Terraform and Sentinel can collaborate to verify infrastructure against organizational environments. The successful and failed HCP Terraform evaluations show how policy checks can identify non-compliant configurations and prevent a plan that violates a mandatory rule from proceeding.SSSSS
+This project demonstrates how Terraform and Sentinel can collaborate to verify infrastructure against organizational environments. The successful and failed HCP Terraform evaluations show how policy checks can identify non-compliant configurations and prevent a plan that violates a mandatory rule from proceeding.

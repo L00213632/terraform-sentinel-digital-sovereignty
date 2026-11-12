@@ -1,5 +1,5 @@
 
-name: Terraform CI Validation
+name: Terraform CI and HCP Sentinel Plan
 
 on:
   push:
@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  terraform-validation:
-    name: Validate Terraform Configuration
+  terraform-validation-and-plan:
+    name: Validate and Run HCP Terraform Plan
     runs-on: ubuntu-latest
 
     defaults:
@@ -23,19 +23,23 @@ jobs:
         working-directory: submission-final/terraform
 
     steps:
-      - name: Checkout GitHub Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.17.1
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
 
       - name: Terraform Initialise
-        run: terraform init -backend=false
+        run: terraform init -input=false
 
       - name: Terraform Validate
         run: terraform validate
+
+      - name: HCP Terraform Speculative Plan
+        run: terraform plan -input=false -no-color

@@ -2,9 +2,11 @@
     Technical Submission Report | Organization: ATUL0012345 | 
 
 1. Introduction and objective
+   
 In this assignment we are designing Policy-as-Code framework using Terraform, Hashi-Corp Sentinel and HCP Terraform. Objective of this assignment is to design a framework to help an organization apply digital sovereignty and infrastructure security requirements prior infrastructure changes can be approved for deployment. 
 
-2. Implementation
+3. Implementation
+   
 In this Terraform is used to define sample AWS environment in Ireland, Europe region which is “eu-west-1”. As mention in assignment configuration includes an EC2 instance, as an encrypted EBS volume and a security group with restricted access HTTPS access for designed region.
 	
 In this, four Sentinel policies are designed and developed are as follows:

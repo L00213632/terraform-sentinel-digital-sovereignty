@@ -1,0 +1,41 @@
+
+name: Terraform CI Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform-validation:
+    name: Validate Terraform Configuration
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: submission-final/terraform
+
+    steps:
+      - name: Checkout GitHub Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.17.1
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Initialise
+        run: terraform init -backend=false
+
+      - name: Terraform Validate
+        run: terraform validate
